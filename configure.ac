@@ -5607,7 +5607,7 @@ elif test x$mono_native_platform_ios = xyes; then
 
 	mono_native_compat_version=`echo $CC | grep -o -e $grep_find_ios_version_pattern`
 
-	mono_native_ldflags="-framework CoreFoundation -framework Foundation -no-undefined -fatal_warnings"
+	mono_native_ldflags="-framework CoreFoundation -framework Foundation -fatal_warnings"
 	MONO_NATIVE_CC=`echo $CC | sed -e $sed_remove_ios_version_pattern`
 	MONO_NATIVE_CXX=`echo $CXX | sed -e $sed_remove_ios_version_pattern`
 	MONO_NATIVE_CPPFLAGS=`echo $CPPFLAGS | sed -e $sed_remove_ios_version_pattern`

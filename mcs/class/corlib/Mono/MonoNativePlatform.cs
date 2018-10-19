@@ -23,6 +23,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -40,5 +41,17 @@ namespace Mono
 
 		[MethodImpl (MethodImplOptions.InternalCall)]
 		extern static void MartinTest ();
+
+		[DllImport ("System.Native")]
+		extern static int mono_native_initialize ();
+
+		public static void Initialize ()
+		{
+			Console.Error.WriteLine ($"MONO NATIVE INITIALIZE!");
+			mono_native_initialize ();
+			Console.Error.WriteLine ($"MONO NATIVE INITIALIZE #1!");
+			MartinTest ();
+			Console.Error.WriteLine ($"MONO NATIVE INITIALIZE #2!");
+		}
 	}
 }

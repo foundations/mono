@@ -23,6 +23,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace Mono
@@ -36,5 +37,8 @@ namespace Mono
 		{
 			return (MonoNativePlatformType)mono_native_get_platform_type ();
 		}
+
+		[MethodImpl (MethodImplOptions.InternalCall)]
+		extern static void MartinTest ();
 	}
 }

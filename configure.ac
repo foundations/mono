@@ -5606,8 +5606,14 @@ elif test x$mono_native_platform_ios = xyes; then
 	grep_find_ios_version_pattern="-m$mono_native_ios_target-version-min=$sed_version_pattern"
 
 	mono_native_compat_version=`echo $CC | grep -o -e $grep_find_ios_version_pattern`
+	
+	if test x$with_bitcode = xyes; then
+		mono_native_ldflags="-framework CoreFoundation -framework Foundation -no-undefined -fatal_warnings"
+		MONO_NATIVE_LIBADD="../mini/$LIBMONO_LA"
+	else
+		mono_native_ldflags="-framework CoreFoundation -framework Foundation -fatal_warnings"
+	fi
 
-	mono_native_ldflags="-framework CoreFoundation -framework Foundation -fatal_warnings"
 	MONO_NATIVE_CC=`echo $CC | sed -e $sed_remove_ios_version_pattern`
 	MONO_NATIVE_CXX=`echo $CXX | sed -e $sed_remove_ios_version_pattern`
 	MONO_NATIVE_CPPFLAGS=`echo $CPPFLAGS | sed -e $sed_remove_ios_version_pattern`
@@ -5666,6 +5672,7 @@ AC_SUBST(MONO_NATIVE_LDFLAGS)
 AC_SUBST(MONO_NATIVE_COMPAT_LDFLAGS)
 AC_SUBST(MONO_NATIVE_UNIFIED_LDFLAGS)
 AC_SUBST(MONO_NATIVE_LIBRARY_NAME)
+AC_SUBST(MONO_NATIVE_LIBADD)
 
 AM_CONDITIONAL(MONO_NATIVE, test x$mono_native = xyes)
 AM_CONDITIONAL(MONO_NATIVE_COMPAT, test x$mono_native_compat = xyes)

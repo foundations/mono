@@ -92,17 +92,23 @@ libmono_native_la_CFLAGS = $(MONO_NATIVE_CFLAGS) $(common_cflags)
 
 libmono_native_la_LDFLAGS = $(MONO_NATIVE_LDFLAGS)
 
+libmono_native_la_LIBADD = $(MONO_NATIVE_LIBADD)
+
 libmono_native_compat_la_SOURCES = $(common_sources) $(platform_sources) platform-type-compat.c
 
 libmono_native_compat_la_CFLAGS = $(MONO_NATIVE_COMPAT_CFLAGS) $(common_cflags)
 
 libmono_native_compat_la_LDFLAGS = $(MONO_NATIVE_COMPAT_LDFLAGS)
 
+libmono_native_compat_la_LIBADD = $(MONO_NATIVE_LIBADD)
+
 libmono_native_unified_la_SOURCES = $(common_sources) $(platform_sources) platform-type-unified.c
 
 libmono_native_unified_la_CFLAGS = $(MONO_NATIVE_UNIFIED_CFLAGS) $(common_cflags)
 
 libmono_native_unified_la_LDFLAGS = $(MONO_NATIVE_UNIFIED_LDFLAGS)
+
+libmono_native_unified_la_LIBADD = $(MONO_NATIVE_LIBADD)
 
 MONO = ../../runtime/mono-wrapper
 BCL_BUILD_DIR = ../../mcs/class

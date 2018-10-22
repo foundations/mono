@@ -50,8 +50,11 @@ namespace Mono
 			Console.Error.WriteLine ($"MONO NATIVE INITIALIZE!");
 			mono_native_initialize ();
 			Console.Error.WriteLine ($"MONO NATIVE INITIALIZE #1!");
+		}
+
+		public static void Test ()
+		{
 			MartinTest ();
-			Console.Error.WriteLine ($"MONO NATIVE INITIALIZE #2!");
 		}
 	}
 }
